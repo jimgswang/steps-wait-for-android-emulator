@@ -156,7 +156,7 @@ func main() {
 		log.Printf("> Checking if device booted...")
 		if emulatorBootDone, err = isDeviceBooted(config.AndroidHome, config.EmulatorSerial); err != nil {
 			if err != errTimedOut {
-				failf("Failed to check emulator boot status, error: %s", err)
+				log.Warnf("Failed to check emulator boot status, error: %s", err)
 			}
 			log.Warnf("Running command timed out, retry...")
 			if err := killADBDaemon(config.AndroidHome); err != nil {
